@@ -53,6 +53,7 @@
 <li>Open index.html in any modern browser.</li>
 <li>The page will automatically load products from the API and display them under the respective category.</li>
 </ul>
+<p>git clon:</p>
 
 
 
