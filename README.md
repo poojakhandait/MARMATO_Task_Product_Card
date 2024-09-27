@@ -55,6 +55,8 @@
 </ul>
 <p>git clon:</p>
 https://github.com/poojakhandait/MARMATO_Task_Product_Card.git
+<p>Deployment Link:</p>
+https://poojakhandait.github.io/MARMATO_Task_Product_Card/
 
 
 
