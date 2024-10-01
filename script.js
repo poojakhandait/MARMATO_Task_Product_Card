@@ -27,18 +27,33 @@ function ProductCards(categories) {
 function createCard(product, categoryName) {
   const card = document.createElement('div');
   card.classList.add('card');
+  // Calculate discount percentage
+   const discountPercentage = calculateDiscount(product.compare_at_price, product.price);
 
   const badge = product.badge_text ? `<div class="badge">${product.badge_text}</div>` : '';
   const image = `<img src="${product.image}" alt="${product.title}">`;
   const title = `<h2>${product.title}</h2>`;
   const vendor = `<p>Vendor: ${product.vendor}</p>`;
   const price = `<p><span class="price">₹${product.compare_at_price}</span> <span class="discount">₹${product.price}</span></p>`;
+  const discount = discountPercentage > 0 ? `<p class="discount-percentage">${discountPercentage}% OFF</p>` : '';
   const button = `<button class="btn">Add to Cart</button>`;
   
-  card.innerHTML = `${badge}${image}${title}${vendor}${price}${button}`;
+  card.innerHTML = `${badge}${image}${title}${vendor}${price}${discount}${button}`;
 
   
   document.getElementById(categoryName).appendChild(card);
+}
+
+// Function to calculate discount percentage
+function calculateDiscount(comparePrice, salePrice) {
+  const compareAtPrice = parseFloat(comparePrice);
+  const currentPrice = parseFloat(salePrice);
+
+  if (!compareAtPrice || !currentPrice || compareAtPrice <= currentPrice) {
+    return 0; 
+  }
+  const discountPercentage = ((compareAtPrice - currentPrice) / compareAtPrice) * 100;
+  return discountPercentage.toFixed(0); 
 }
 
 
